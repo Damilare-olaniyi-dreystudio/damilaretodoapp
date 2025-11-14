@@ -1,1 +1,279 @@
+.parent {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+}
 
+.todo-app {
+    margin-top: calc(100vh / 4);
+}
+
+ul li {
+    list-style: none;
+
+    cursor: pointer;
+    font-size: 14px;
+    padding: 12px 8px 12px 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background: transparent;
+    border: 0.1px solid rgb(105, 105, 103);
+    border-radius: 100%;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background: #ff5945;
+    border: solid #ff5945;
+    border-radius: 100%;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+ul li span {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 50%;
+}
+
+ul li span:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-link {
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#input:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 89, 69, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn:active {
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+}
+
+/* Task Animations */
+.task-enter {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.task-exit {
+    animation: slideOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Priority Colors */
+.priority-low {
+    border-left: 5px solid #28a745;
+}
+
+.priority-medium {
+    border-left: 5px solid #ffc107;
+}
+
+.priority-high {
+    border-left: 5px solid #dc3545;
+}
+
+/* Overdue */
+.overdue {
+    background-color: #f8d7da;
+}
+
+/* Dark Mode */
+.dark-mode .parent {
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+}
+
+.dark-mode .todo-app {
+    background-color: #2a2d3a;
+    color: #e0e0e0;
+}
+
+.dark-mode .todo-app h2 {
+    color: #e0e0e0;
+}
+
+.dark-mode ul li {
+    color: #e0e0e0;
+}
+
+.dark-mode ul li.checked {
+    color: #888;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background-color: #3a3d4a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.dark-mode .btn-outline-secondary {
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+     background-color: #555;
+}
+
+/* Drag Handle */
+.drag-handle {
+    cursor: grab;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #999;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Delete Button */
+.delete-btn {
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+/* Progress Bar Gradient */
+.progress-bar {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Edit Button */
+.edit-btn {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.edit-btn:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: #666;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+/* Export/Import Buttons */
+.export-import {
+    margin-top: 10px;
+}
+
+/* Focus Styles for Accessibility */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .todo-app {
+        margin-top: 20px;
+    }
+    ul li {
+        font-size: 16px;
+        padding: 15px 8px 15px 50px;
+    }
+}
+.task-text {
+    position: relative;
+    text-align: left;
+    flex: 3;
+}
+.drag-handle {
+    position: relative;
+    margin-right: 10px;
+}
+.dueDate {
+    position: relative;
+    margin-right: 10px;
+}
