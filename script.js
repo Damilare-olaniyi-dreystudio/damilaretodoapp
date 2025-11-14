@@ -102,8 +102,8 @@ function renderTasks(){
         if (task.dueDate && new Date(task.dueDate) < new Date()) li.classList.add('overdue');
         li.innerHTML = `
             <span class="drag-handle" aria-label="Drag to reorder" tabindex="0">⋮⋮</span>
-            <span class="task-text" style="font-size: 0.9em;">${task.text}</span>
-            ${task.dueDate ? `<small class="text-muted ms-2">${task.dueDate}</small>` : ''}
+            <span class="task-text" style="font-size: 1em;">${task.text}</span>
+            ${task.dueDate ? `<small class="text-muted col-md-4 dueDate" style ="left: 350px; position: absolute;">${task.dueDate}</small>` : ''}
             <span class="edit-btn me-5" aria-label="Edit task" tabindex="0"><i class="bi bi-pencil"></i></span>
             <span class="delete-btn ms-2" aria-label="Delete task" tabindex="0"><i class="bi bi-trash text-danger"></i></span>
         `;
